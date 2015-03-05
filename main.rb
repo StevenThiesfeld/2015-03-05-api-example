@@ -30,16 +30,34 @@ post "/students/edit/:id/:name/:age/:github" do
   student.to_hash.to_json
 end
 
-get "/students/insert/:name/:age/:github" do
+post "/students/insert/:name/:age/:github" do
   student = Student.new(params)
   student.insert
   student.to_hash.to_json
 end
 
-get "/students/delete/:id" do
+post "/students/delete/:id" do
   student = Student.find(params[:id])
   student.delete
   student.to_hash.to_json
+end
+
+post "/students/:id/ultra-wise" do
+  student = Student.find(params[:id])
+  if student.ultra_wise?
+    "This Student is ultra wise!"
+  else
+    "This Student is not ultra wise"
+  end
+end
+
+post "/students/:id/can-drink" do
+  student = Student.find(params[:id])
+  if student.can_drink?
+    "This Student can drink!"
+  else
+    "This Student is underage!"
+  end
 end
 
 # Afternoon Assignment:
