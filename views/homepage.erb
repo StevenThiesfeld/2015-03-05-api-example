@@ -10,10 +10,20 @@
     <a href="javascript:void(0)" onclick="showStudents()">Student List</a>
   </li>
   <li>
-    <a href="javascript:void(0)" onclick="showStudent()">Find Student</a>
+    <form id="showStudentForm" action="javascript:void(0)">
+      Student ID<input type="text" name="id">
+      <button onclick="showStudent()">Show Student</button>
+    </form>
   </li>
   <li>
-    <a href="javascript:void(0)" onclick="editStudent()">Edit Student</a>
+    <h4>Edit Student</h4>
+    <form id="editStudentForm" action="javascript:void(0)">
+      Student ID:<input type="text" name="id">
+      Student Name:<input type="text" name="name">
+      Student Age:<input type="text" name="age">
+      Student Github Name:<input type="text" name="github">
+      <button onclick="editStudent()">Edit Student</button>
+    </form>
   </li>
   <li>
     <a href="javascript:void(0)" onclick="insertStudent()">Add Student</a>

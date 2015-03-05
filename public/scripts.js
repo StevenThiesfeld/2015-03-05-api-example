@@ -1,5 +1,5 @@
 function showStudents(){
-  document.getElementById("response").innerHTML = ""
+  document.getElementById("response").innerHTML = "";
   var request = new XMLHttpRequest;
   request.open("get", "http://127.0.0.1:4567/students");
   request.send();
@@ -7,19 +7,23 @@ function showStudents(){
 }
 
 function showStudent(){
-  document.getElementById("response").innerHTML = ""
+  document.getElementById("response").innerHTML = "";
+  var formElement = document.getElementById("showStudentForm");
   var request = new XMLHttpRequest;
-  request.open("get", "http://127.0.0.1:4567/students/3");
-  request.send();
+  request.open("post", "http://127.0.0.1:4567/student");
+  request.send(new FormData(formElement));
   request.addEventListener("load", displaySingleResponse, false);
 }
 
 function editStudent(){
   document.getElementById("response").innerHTML = ""
+  var formElement = document.getElementById("editStudentForm");
   var request = new XMLHttpRequest;
-  request.open("get", "http://127.0.0.1:4567/students/edit/2/JOHN/99/JOHNNY");
-  request.send();
+  request.open("post", "http://127.0.0.1:4567/students/edit");
+  request.send(new FormData(formElement));
   request.addEventListener("load", displaySingleResponse, false);
+  document.getElementById("editStudentForm").reset()
+  
 }
 
 function insertStudent(){
@@ -46,7 +50,7 @@ function foo(){
 }
 
 var displayResponse = function(event){
-  objects = JSON.parse(event.target.response);
+  var objects = JSON.parse(event.target.response);
   for (i = 0; i < objects.length; i ++){
     var p = document.createElement("P");
     var txt = document.createTextNode(JSON.stringify(objects[i]));
@@ -56,9 +60,9 @@ var displayResponse = function(event){
 }
 
 var displaySingleResponse = function(event){
-  object = JSON.parse(event.target.response);
-    var p = document.createElement("P");
-    var txt = document.createTextNode(JSON.stringify(object));
-    p.appendChild(txt);
-    document.getElementById("response").appendChild(p)
+  var object = JSON.parse(event.target.response);
+  var p = document.createElement("P");
+  var txt = document.createTextNode(JSON.stringify(object));
+  p.appendChild(txt);
+  document.getElementById("response").appendChild(p)
 }

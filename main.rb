@@ -18,13 +18,13 @@ get "/students" do
   students_hash.to_json
 end
 
-get "/students/:id" do
+post "/student" do
   student = Student.find(params[:id])
   student_hash = student.to_hash
   student_hash.to_json
 end
 
-get "/students/edit/:id/:name/:age/:github" do
+post "/students/edit" do
   student = Student.find(params[:id])
   student.edit({"name" => params[:name], "age" => params[:age], 
     "github" => params[:github]}).save
