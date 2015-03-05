@@ -13,7 +13,6 @@ end
 
 get "/students" do
   students = Student.all
-  
   students_hash = students.map {|s| s.to_hash}
   students_hash.to_json
 end
@@ -24,6 +23,13 @@ get "/students/:id" do
   student_hash = student.to_hash
   student_hash.to_json
 end
+
+get "/students/edit/:id/:name/:age/:github" do
+  student = Student.find(params[:id])
+  student.edit({"name" => params[:name], "age" => params[:age], "github" => params[:github]}).save
+  student.to_hash.to_json
+end
+  
 
 # Afternoon Assignment:
 

@@ -49,4 +49,34 @@ class Student
       github: github
     }
   end
+  
+  def edit(params)
+    params.each do |field, value|
+      thaw_field = field.dup.insert(0, "@")
+      self.instance_variable_set(thaw_field, value) if value != ""
+    end
+    self
+  end
+  
+  def save
+    attributes = []
+
+    # Example  [:@serial_number, :@name, :@description]
+    instance_variables.each do |i|
+      # Example  :@name
+      attributes << i.to_s.delete("@") # "name"
+    end
+  
+    query_hash = {}
+
+    attributes.each do |a|
+      value = self.send(a)
+      query_hash[a] = value
+    end
+    
+    query_hash.each do |key, value|
+      DATABASE.execute("UPDATE students SET #{key} = ? WHERE id = #{id}", value )
+    end
+    self
+  end
 end
