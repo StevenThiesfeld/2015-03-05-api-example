@@ -30,6 +30,14 @@ function insertStudent(){
   request.addEventListener("load", displaySingleResponse, false);
 }
 
+function deleteStudent(){
+  document.getElementById("response").innerHTML = ""
+  var request = new XMLHttpRequest;
+  request.open("post", "http://127.0.0.1:4567/students/delete/7");
+  request.send();
+  request.addEventListener("load", displaySingleResponse, false);
+}
+
 function foo(){
   var testP = document.createElement("P");
   var testTxt = document.createTextNode("This is a test");
