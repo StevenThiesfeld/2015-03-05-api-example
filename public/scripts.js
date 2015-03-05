@@ -22,6 +22,6 @@ var displayStudents = function(event){
   }
 }
 
-function formatObject(object){
-  var objectString = object.id + 
-}
+// function formatObject(object){
+//   var objectString = object.id +
+// }
