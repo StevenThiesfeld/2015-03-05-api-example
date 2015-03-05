@@ -1,6 +1,7 @@
 require "sinatra"
 require 'json'
 require "sqlite3"
+require "pry"
 
 DATABASE = SQLite3::Database.new("students.db")
 DATABASE.results_as_hash = true
@@ -19,14 +20,14 @@ end
 
 get "/students/:id" do
   student = Student.find(params[:id])
-
   student_hash = student.to_hash
   student_hash.to_json
 end
 
-post "/students/edit/:id/:name/:age/:github" do
+get "/students/edit/:id/:name/:age/:github" do
   student = Student.find(params[:id])
-  student.edit(params).save
+  student.edit({"name" => params[:name], "age" => params[:age], 
+    "github" => params[:github]}).save
   student.to_hash.to_json
 end
 

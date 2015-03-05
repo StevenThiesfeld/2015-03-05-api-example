@@ -9,11 +9,11 @@ class Student
   end
   
   def can_drink?
-    age >= 200
+    age.to_i >= 200
   end
   
   def ultra_wise?
-    age >= 1000
+    age.to_i >= 1000
   end
   
   def github_link
