@@ -58,6 +58,16 @@ class Student
     self
   end
   
+  def insert
+    DATABASE.execute("INSERT INTO students (name, age, github) VALUES 
+    ('#{@name}', #{@age}, '#{@github}')")
+    @id =  DATABASE.last_insert_row_id
+  end
+  
+  def delete
+    DATABASE.execute("DELETE FROM students WHERE id = #{@id}")
+  end
+  
   def save
     attributes = []
 

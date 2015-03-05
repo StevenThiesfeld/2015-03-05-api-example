@@ -24,12 +24,23 @@ get "/students/:id" do
   student_hash.to_json
 end
 
-get "/students/edit/:id/:name/:age/:github" do
+post "/students/edit/:id/:name/:age/:github" do
   student = Student.find(params[:id])
-  student.edit({"name" => params[:name], "age" => params[:age], "github" => params[:github]}).save
+  student.edit(params).save
   student.to_hash.to_json
 end
-  
+
+get "/students/insert/:name/:age/:github" do
+  student = Student.new(params)
+  student.insert
+  student.to_hash.to_json
+end
+
+get "/students/delete/:id" do
+  student = Student.find(params[:id])
+  student.delete
+  student.to_hash.to_json
+end
 
 # Afternoon Assignment:
 
