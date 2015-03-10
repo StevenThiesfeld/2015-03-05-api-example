@@ -29,13 +29,13 @@ post "/students/edit" do
   student.to_hash.to_json
 end
 
-post "/students/insert/:name/:age/:github" do
+post "/students/insert" do
   student = Student.new(params)
   student.insert
   student.to_hash.to_json
 end
 
-post "/students/delete/:id" do
+post "/students/delete" do
   student = Student.find(params[:id])
   student.delete
   student.to_hash.to_json

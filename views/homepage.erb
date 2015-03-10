@@ -26,13 +26,20 @@
     </form>
   </li>
   <li>
-    <a href="javascript:void(0)" onclick="insertStudent()">Add Student</a>
+    <h4>Add Student</h4>
+    <form id="addStudentForm" action="javascript:void(0)">
+      Student Name:<input type="text" name="name">
+      Student Age:<input type="text" name="age">
+      Student Github Name:<input type="text" name="github">
+      <button onclick="insertStudent()">Add Student</button>
+    </form>
   </li>
   <li>
-    <a href="javascript:void(0)" onclick="deleteStudent()">Delete Student</a>
-  </li>
-  <li>
-    <a href="javascript:void(0)" onclick="showStudents()">Student List</a>
+    <h4>Delete Student</h4>
+    <form id="deleteStudentForm" action="javascript:void(0)">
+      Student ID<input type="text" name="id">
+      <button onclick="deleteStudent()">Delete Student</button>
+    </form>
   </li>
 </ul>
 

@@ -28,18 +28,22 @@ function editStudent(){
 
 function insertStudent(){
   document.getElementById("response").innerHTML = ""
+  var formElement = document.getElementById("addStudentForm");
   var request = new XMLHttpRequest;
-  request.open("post", "http://127.0.0.1:4567/students/insert/NEWSTUDENT/100/nstudent");
-  request.send();
+  request.open("post", "http://127.0.0.1:4567/students/insert");
+  request.send(new FormData(formElement));
   request.addEventListener("load", displaySingleResponse, false);
+  document.getElementById("addStudentForm").reset()
 }
 
 function deleteStudent(){
   document.getElementById("response").innerHTML = ""
+  var formElement = document.getElementById("deleteStudentForm");
   var request = new XMLHttpRequest;
-  request.open("post", "http://127.0.0.1:4567/students/delete/7");
-  request.send();
+  request.open("post", "http://127.0.0.1:4567/students/delete");
+  request.send(new FormData(formElement));
   request.addEventListener("load", displaySingleResponse, false);
+  document.getElementById("deleteStudentForm").reset()
 }
 
 function foo(){
